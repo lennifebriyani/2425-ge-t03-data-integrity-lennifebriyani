@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author 12S23023 Lenni Febriyani
- * @author 12S23045 Chintya Reginauli Rajagukguk
+ * @autor 12S23023 Lenni Febriyani
+ * @autor 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Driver2 {
