@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 12S23023 Lenni Febriyani
- * @author 12S23045 Chintya Reginauli Rajagukguk
+ * @autor 12S23023 Lenni Febriyani
+ * @autor 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Driver1 {
@@ -23,8 +23,9 @@ public class Driver1 {
         processInput("student-add#12S20999#Wiro Sableng#2020#Information Systems");
         processInput("enrollment-add#12S2203#12S20999#2021/2022#even");
         processInput("student-add#12S20111#Jaka Sembung#2019#Information Systems");
-        processInput("enrollment-add#12S2203#12S20000#2020/2021#even");
+        processInput("enrollment-add#12S2203#12S20111#2020/2021#even");
         processInput("enrollment-add#12S2200#12S20000#2020/2021#odd");
+        printData();
     }
 
     private static void processInput(String input) {
@@ -62,6 +63,18 @@ public class Driver1 {
         } else {
             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
             enrollments.put(courseCode + "-" + studentId, enrollment);
+        }
+    }
+
+    private static void printData() {
+        for (Course course : courses.values()) {
+            System.out.println(course.getCode() + "|" + course.getName() + "|" + course.getCredits() + "|" + course.getGrade());
+        }
+        for (Student student : students.values()) {
+            System.out.println(student.getId() + "|" + student.getName() + "|" + student.getYear() + "|" + student.getMajor());
+        }
+        for (Enrollment enrollment : enrollments.values()) {
+            System.out.println(enrollment.getCourse().getCode() + "|" + enrollment.getStudent().getId() + "|" + enrollment.getAcademicYear() + "|" + enrollment.getSemester() + "|None");
         }
     }
 }
