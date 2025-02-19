@@ -24,6 +24,7 @@ public class Driver1 {
         processInput("enrollment-add#12S2203#12S20999#2021/2022#even");
         processInput("student-add#12S20111#Jaka Sembung#2019#Information Systems");
         processInput("enrollment-add#12S2203#12S20111#2020/2021#even");
+        processInput("enrollment-add#12S2203#12S20000#2020/2021#even");
         processInput("enrollment-add#12S2200#12S20000#2020/2021#odd");
         printData();
     }
@@ -78,4 +79,3 @@ public class Driver1 {
         }
     }
 }
-
