@@ -42,7 +42,7 @@ public class Driver1 {
                 break;
             case "enrollment-add":
                 addEnrollment(parts[1], parts[2], parts[3], parts[4]);
-                break;
+                break; 
         }
     }
 
