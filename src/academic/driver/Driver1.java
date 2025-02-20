@@ -4,9 +4,9 @@ import academic.model.Course;
 import academic.model.Student;
 import academic.model.Enrollment;
 
-import java.util.Scanner;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.Scanner;
 
 /**
  * @autor 12S23023 Lenni Febriyani
@@ -14,9 +14,9 @@ import java.util.TreeMap;
  */
 
 public class Driver1 {
-    private static Map<String, Course> courses = new TreeMap<>();
-    private static Map<String, Student> students = new TreeMap<>();
-    private static Map<String, Enrollment> enrollments = new TreeMap<>();
+    private static Map<String, Course> courses = new HashMap<>();
+    private static Map<String, Student> students = new HashMap<>();
+    private static Map<String, Enrollment> enrollments = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -42,7 +42,7 @@ public class Driver1 {
                 break;
             case "enrollment-add":
                 addEnrollment(parts[1], parts[2], parts[3], parts[4]);
-                break;
+                break; 
         }
     }
 
@@ -59,8 +59,9 @@ public class Driver1 {
     private static void addEnrollment(String courseCode, String studentId, String academicYear, String semester) {
         Course course = courses.get(courseCode);
         Student student = students.get(studentId);
-        Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
-        enrollments.put(courseCode + "-" + studentId, enrollment);
+            Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
+            enrollments.put(courseCode + "-" + studentId, enrollment);
+        }
     }
 
     private static void printData() {

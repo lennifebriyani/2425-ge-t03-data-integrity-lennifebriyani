@@ -4,20 +4,19 @@ import academic.model.Course;
 import academic.model.Student;
 import academic.model.Enrollment;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author 
- * 12S23023 Lenni Febriyani
- * 12S23045 Chintya Reginauli Rajagukguk
+ * @author 12S23023 Lenni Febriyani
+ * @author 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Driver2 {
-    private static List<Course> courses = new ArrayList<>();
-    private static List<Student> students = new ArrayList<>();
-    private static List<Enrollment> enrollments = new ArrayList<>();
+    private static Map<String, Course> courses = new HashMap<>();
+    private static Map<String, Student> students = new HashMap<>();
+    private static Map<String, Enrollment> enrollments = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -49,53 +48,35 @@ public class Driver2 {
 
     private static void addCourse(String code, String name, int credits, char grade) {
         Course course = new Course(code, name, credits, grade);
-        courses.add(course);
+        courses.put(code, course);
     }
 
     private static void addStudent(String id, String name, int year, String major) {
         Student student = new Student(id, name, year, major);
-        students.add(student);
+        students.put(id, student);
     }
 
     private static void addEnrollment(String courseCode, String studentId, String academicYear, String semester) {
-        Course course = findCourseByCode(courseCode);
-        Student student = findStudentById(studentId);
+        Course course = courses.get(courseCode);
+        Student student = students.get(studentId);
         if (course == null) {
             System.out.println("invalid course|" + courseCode);
         } else if (student == null) {
             System.out.println("invalid student|" + studentId);
         } else {
             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
-            enrollments.add(enrollment);
+            enrollments.put(courseCode + "-" + studentId, enrollment);
         }
-    }
-
-    private static Course findCourseByCode(String code) {
-        for (Course course : courses) {
-            if (course.getCode().equals(code)) {
-                return course;
-            }
-        }
-        return null;
-    }
-
-    private static Student findStudentById(String id) {
-        for (Student student : students) {
-            if (student.getId().equals(id)) {
-                return student;
-            }
-        }
-        return null;
     }
 
     private static void printData() {
-        for (Course course : courses) {
+        for (Course course : courses.values()) {
             System.out.println(course.getCode() + "|" + course.getName() + "|" + course.getCredits() + "|" + course.getGrade());
         }
-        for (Student student : students) {
+        for (Student student : students.values()) {
             System.out.println(student.getId() + "|" + student.getName() + "|" + student.getYear() + "|" + student.getMajor());
         }
-        for (Enrollment enrollment : enrollments) {
+        for (Enrollment enrollment : enrollments.values()) {
             System.out.println(enrollment.getCourse().getCode() + "|" + enrollment.getStudent().getId() + "|" + enrollment.getAcademicYear() + "|" + enrollment.getSemester() + "|None");
         }
     }
