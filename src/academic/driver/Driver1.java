@@ -1,5 +1,3 @@
-package academic.driver;
-
 import academic.model.Course;
 import academic.model.Student;
 import academic.model.Enrollment;
@@ -45,7 +43,6 @@ public class Driver1 {
                 break; 
         }
     }
-
     private static void addCourse(String code, String name, int credits, char grade) {
         Course course = new Course(code, name, credits, grade);
         courses.put(code, course);
@@ -61,7 +58,6 @@ public class Driver1 {
         Student student = students.get(studentId);
             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
             enrollments.put(courseCode + "-" + studentId, enrollment);
-        }
     }
 
     private static void printData() {
