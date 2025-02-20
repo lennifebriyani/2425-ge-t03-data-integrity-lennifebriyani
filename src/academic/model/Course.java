@@ -2,8 +2,8 @@ package academic.model;
 
 /**
  * 
- * @autor 12S23023 Lenni Febriyani
- * @autor 12S23045 Chintya Reginauli Rajagukguk
+ * @author 12S23023 Lenni Febriyani
+ * @author 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Course {
