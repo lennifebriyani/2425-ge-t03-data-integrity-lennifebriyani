@@ -6,16 +6,16 @@ import academic.model.Enrollment;
 import java.util.*;
 
 /**
- * @author 12S23023 Lenni Febriyani Hutape
+ * @author 12S23023 Lenni Febriyani Hutapea
  * @author 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Driver1 {
     public static void main(String[] _args) {
         Scanner sc = new Scanner(System.in);
-        LinkedList<Course> courses = new LinkedList<>();
-        LinkedHashSet<Student> students = new LinkedHashSet<>();
-        LinkedHashSet<Enrollment> enrollments = new LinkedHashSet<>();
+        List<Course> courses = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
+        List<Enrollment> enrollments = new ArrayList<>();
 
         Set<String> invalidStudents = new LinkedHashSet<>();
         Set<String> invalidCourses = new LinkedHashSet<>();
@@ -33,7 +33,7 @@ public class Driver1 {
             switch (data[0]) {
                 case "course-add":
                     if (!isCourseExists(courses, data[1])) {
-                        courses.addFirst(new Course(data[1], data[2], Integer.parseInt(data[3]), data[4])); // addFirst() bisa digunakan
+                        courses.add(new Course(data[1], data[2], Integer.parseInt(data[3]), data[4].charAt(0)));
                     }
                     break;
 
@@ -87,11 +87,11 @@ public class Driver1 {
         return courses.stream().anyMatch(c -> c.getId().equals(id));
     }
 
-    private static boolean isStudentExists(Set<Student> students, String id) {
+    private static boolean isStudentExists(List<Student> students, String id) {
         return students.stream().anyMatch(s -> s.getId().equals(id));
     }
 
-    private static boolean isEnrollmentExist(Set<Enrollment> enrollments, String courseId, String studentId, String year, String semester) {
+    private static boolean isEnrollmentExist(List<Enrollment> enrollments, String courseId, String studentId, String year, String semester) {
         return enrollments.stream().anyMatch(e ->
             e.getCourseCode().equals(courseId) &&
             e.getStudentId().equals(studentId) &&
@@ -104,7 +104,7 @@ public class Driver1 {
         return courses.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
     }
 
-    private static Student getStudentById(Set<Student> students, String id) {
+    private static Student getStudentById(List<Student> students, String id) {
         return students.stream().filter(s -> s.getId().equals(id)).findFirst().orElse(null);
     }
 }
