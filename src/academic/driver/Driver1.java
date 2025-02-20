@@ -59,11 +59,6 @@ public class Driver1 {
     private static void addEnrollment(String courseCode, String studentId, String academicYear, String semester) {
         Course course = courses.get(courseCode);
         Student student = students.get(studentId);
-        if (course == null) {
-            System.out.println("invalid course|" + courseCode);
-        } else if (student == null) {
-            System.out.println("invalid student|" + studentId);
-        } else {
             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
             enrollments.put(courseCode + "-" + studentId, enrollment);
         }
