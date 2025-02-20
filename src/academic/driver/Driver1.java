@@ -17,6 +17,7 @@ public class Driver1 {
     private static List<Course> courses = new ArrayList<>();
     private static List<Student> students = new ArrayList<>();
     private static List<Enrollment> enrollments = new ArrayList<>();
+    private static List<String> invalidMessages = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -60,9 +61,9 @@ public class Driver1 {
         Course course = findCourse(courseCode);
         Student student = findStudent(studentId);
         if (course == null) {
-            System.out.println("invalid course|" + courseCode);
+            invalidMessages.add("invalid course|" + courseCode);
         } else if (student == null) {
-            System.out.println("invalid student|" + studentId);
+            invalidMessages.add("invalid student|" + studentId);
         } else {
             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
             enrollments.add(enrollment);
@@ -88,6 +89,9 @@ public class Driver1 {
     }
 
     private static void printData() {
+        for (String message : invalidMessages) {
+            System.out.println(message);
+        }
         for (Course course : courses) {
             System.out.println(course.getCode() + "|" + course.getName() + "|" + course.getCredits() + "|" + course.getGrade());
         }
