@@ -8,17 +8,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
+/**s
  * @author 12S23023 Lenni Febriyani
  * @author 12S23045 Chintya Reginauli Rajagukguk
  */
 
 public class Driver1 {
-    private static Map<String, Course> courses = new HashMap<>();
-    private static Map<String, Student> students = new HashMap<>();
-    private static Map<String, Enrollment> enrollments = new HashMap<>();
 
     public static void main(String[] args) {
+        private static Map<String, Course> courses = new HashMap<>();
+    private static Map<String, Student> students = new HashMap<>();
+    private static Map<String, Enrollment> enrollments = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
